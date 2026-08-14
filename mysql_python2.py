@@ -12,9 +12,9 @@ else:
     print("Connection Established")
     mycursor=conn.cursor()
     #mycursor.execute("CREATE DATABASE school")
-    #mycursor.execute("SHOW DATABASES")
-    #for c in mycursor.fetchall():
-        #print(c)
+    mycursor.execute("SHOW DATABASES")
+    for c in mycursor.fetchall():
+        print(c)
 
     q='''
     CREATE TABLE students(
@@ -38,7 +38,7 @@ else:
     subjectsmarks INT(10)
     )
     '''
-    #mycursor.execute(q)
+    #mycursor.execute(q2)
     #mycursor.execute("SHOW TABLES")
     #for x in mycursor.fetchall():
         #print(x)
@@ -62,18 +62,18 @@ else:
         (18,"Saad","Male",710),
         (19,"Naif","Male",690)
     ]
-    #mycursor.execute(q3,v)
-    conn.commit()
-    #mycursor.execute(q3,v1)
-    conn.commit()
-    #mycursor.execute(q3,v2)
-    conn.commit()
-    #mycursor.execute(q3,v3)
-    conn.commit()
-    #mycursor.execute(q3,v4)
-    conn.commit()
-    mycursor.executemany(q3,vlist)
-    conn.commit()
+    # mycursor.execute(q3,v)
+    # conn.commit()
+    # mycursor.execute(q3,v1)
+    # conn.commit()
+    # mycursor.execute(q3,v2)
+    # conn.commit()
+    # mycursor.execute(q3,v3)
+    # conn.commit()
+    # mycursor.execute(q3,v4)
+    # conn.commit()
+    # mycursor.executemany(q3,vlist)
+    # conn.commit()
     mycursor.execute("SELECT * FROM students")
     for x in mycursor.fetchall():
         print(x)
