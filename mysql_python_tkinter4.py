@@ -19,9 +19,13 @@ else:
     
     def display_record():
         selected_roll_no=r.get()
-        mycursor.execute("SELECT * FROM students")
-        for c in mycursor.fetchall():
-            print(c)
+        if not selected_roll_no.strip():
+            messagebox.showerror("Error", "Please Enter Roll Number!")
+            return
+
+        #mycursor.execute("SELECT * FROM students")
+        #for c in mycursor.fetchall():
+            #print(c)
 
         q=f'''
         SELECT * FROM students
@@ -35,6 +39,7 @@ else:
             L8.config(text="")
             L9.config(text="")
             messagebox.showerror("Error","Record Not Found!")
+
         else:
             L6.config(text=r1[0][0])
             L7.config(text=r1[0][1])
@@ -43,7 +48,8 @@ else:
     mycursor.execute("SELECT * FROM students")
     for c in mycursor.fetchall():
         print(c)
-    
+        
+
 
         
     root=Tk()
@@ -56,7 +62,7 @@ else:
     E1=Entry(root,textvariable=r)
     E1.grid(row=0,column=1)
 
-    B1=Button(root,text="Display Record!",command=display_record,font=("Arial",12,"bold"),bg="green",padx=5,pady=5)
+    B1=Button(root,text="Display Record!",fg="white",command=display_record,font=("Arial",12,"bold"),bg="green",padx=5,pady=5)
     B1.grid(row=0,column=2,padx=5,pady=5)
 
     L2=Label(root,text="Roll Number",font=("Arial",11,"bold"),padx=5,pady=5)
