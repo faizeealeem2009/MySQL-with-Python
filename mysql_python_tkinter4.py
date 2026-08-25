@@ -45,12 +45,33 @@ else:
             L7.config(text=r1[0][1])
             L8.config(text=r1[0][2])
             L9.config(text=r1[0][3])
-    mycursor.execute("SELECT * FROM students")
-    for c in mycursor.fetchall():
-        print(c)
+    #mycursor.execute("SELECT * FROM students")
+    #for c in mycursor.fetchall():
+        #print(c)
         
+    def delete_record():
+        selected_roll_no=int(r.get())
 
-
+        q1=f'''
+            DELETE FROM students
+            WHERE roll_no={selected_roll_no}
+            '''
+        try:
+            mycursor.execute(q1)
+            conn.commit()
+            messagebox.showinfo("Deleted","Record Deleted Successfully!")
+            L6.config(text="")
+            L7.config(text="")
+            L8.config(text="")
+            L9.config(text="")
+            q2=f'''
+                SELECT * FROM students
+                '''
+            mycursor.execute(q2)
+            for s in mycursor.fetchall():
+                print(s)
+        except:
+            messagebox.showerror("Error","Record Not Found")
         
     root=Tk()
     root.title("Display Data")
@@ -116,4 +137,6 @@ else:
              bg="#244b78",fg=accent_color)
     L9.grid(row=2,column=3,padx=5,pady=5)
     
+    B2=Button(root,text="Delete Record",fg="white",command=delete_record,font=("Arial",12,"bold"),bg="red",padx=5,pady=5)
+    B2.grid(row=3,column=0,padx=5,pady=5)
     root.mainloop()
