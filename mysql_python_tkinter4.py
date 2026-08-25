@@ -54,40 +54,66 @@ else:
         
     root=Tk()
     root.title("Display Data")
+    root.geometry("700x220")
+    root.configure(bg="#10233f")
+
+    label_color="#eaf2ff"
+    input_bg="#f4f8ff"
+    input_fg="#10233f"
+    accent_color="#20c997"
+    panel_color="#1b3a61"
     r=StringVar()
 
-    L1=Label(root,text="Enter Roll No:",font=("Arial",15,"bold"),padx=5,pady=5)
+    L1=Label(root,text="Enter Roll No:",font=("Arial",15,"bold"),padx=5,pady=5,
+             bg="#10233f",fg=label_color)
     L1.grid(row=0,column=0,padx=5,pady=5)
 
-    E1=Entry(root,textvariable=r)
+    E1=Entry(root,textvariable=r,bg=input_bg,fg=input_fg,
+             insertbackground=input_fg,relief=FLAT)
     E1.grid(row=0,column=1)
 
-    B1=Button(root,text="Display Record!",fg="white",command=display_record,font=("Arial",12,"bold"),bg="green",padx=5,pady=5)
+    B1=Canvas(root,width=170,height=44,bg="#10233f",highlightthickness=0,
+              cursor="hand2")
+    B1.create_rectangle(20,2,150,42,fill=accent_color,outline=accent_color)
+    B1.create_rectangle(2,20,168,24,fill=accent_color,outline=accent_color)
+    B1.create_oval(2,2,42,42,fill=accent_color,outline=accent_color)
+    B1.create_oval(128,2,168,42,fill=accent_color,outline=accent_color)
+    B1.create_text(85,22,text="Display Record!",fill="#06291f",
+                   font=("Arial",12,"bold"))
+    B1.bind("<Button-1>",lambda event: display_record())
     B1.grid(row=0,column=2,padx=5,pady=5)
 
-    L2=Label(root,text="Roll Number",font=("Arial",11,"bold"),padx=5,pady=5)
+    L2=Label(root,text="Roll Number",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg=panel_color,fg=label_color)
     L2.grid(row=1,column=0,padx=5,pady=5)
 
-    L3=Label(root,text="Student Name",font=("Arial",11,"bold"),padx=5,pady=5)
+    L3=Label(root,text="Student Name",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg=panel_color,fg=label_color)
     L3.grid(row=1,column=1,padx=5,pady=5)
 
-    L4=Label(root,text="Gender",font=("Arial",11,"bold"),padx=5,pady=5)
+    L4=Label(root,text="Gender",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg=panel_color,fg=label_color)
     L4.grid(row=1,column=2,padx=5,pady=5)
 
-    L5=Label(root,text="Marks",font=("Arial",11,"bold"),padx=5,pady=5)
+    L5=Label(root,text="Marks",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg=panel_color,fg=label_color)
     L5.grid(row=1,column=3,padx=5,pady=5)
 
     #Display Record
-    L6=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5)
+    L6=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg="#244b78",fg=accent_color)
     L6.grid(row=2,column=0,padx=5,pady=5)
 
-    L7=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5)
+    L7=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg="#244b78",fg=accent_color)
     L7.grid(row=2,column=1,padx=5,pady=5)
 
-    L8=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5)
+    L8=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg="#244b78",fg=accent_color)
     L8.grid(row=2,column=2,padx=5,pady=5)
     
-    L9=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5)
+    L9=Label(root,text="",font=("Arial",11,"bold"),padx=5,pady=5,
+             bg="#244b78",fg=accent_color)
     L9.grid(row=2,column=3,padx=5,pady=5)
     
     root.mainloop()
